@@ -44,4 +44,4 @@ jobs:
         with:
           images: bruvicoso/rotten-potatos:${{ github.run_number }}
           manifests: |
-            k8s/depoyments.yaml
+            k8s/depoyment.yaml
