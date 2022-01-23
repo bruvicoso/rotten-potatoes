@@ -10,18 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Docker Login
-        uses: docker/login-action@v1.12.0
-        with:
-          username: ${{ secrets.DOCKERHUB_USER }}
-          password: ${{ secrets.DOCKERHUB_PWD }}
+     - uses: actions/checkout@v2
+     
+     - name: Docker Login
+       uses: docker/login-action@v1.12.0
+       with:
+         username: ${{ secrets.DOCKERHUB_USER }}
+         password: ${{ secrets.DOCKERHUB_PWD }}
 
-      - uses: actions/checkout@v2
-
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+     - name: Build and push Docker images
+       uses: docker/build-push-action@v2.8.0
+       with:
+        context: ./src
+        file: ./src/Dockerfile
+        push: true
+        tags:
+          bruvicoso/rotten-potatoes:lastes
+          bruvicoso/rotten-potatos:${{ github.run_number }}
