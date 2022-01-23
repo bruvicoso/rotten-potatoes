@@ -39,4 +39,9 @@ jobs:
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.K8S_CONFING }}
-      
+      - name: Deploy to Kubernetes cluster
+        uses: Azure/k8s-deploy@v1.5
+        with:
+          images: bruvicoso/rotten-potatos:${{ github.run_number }}
+          manifests: |
+            k8s/depoyments.yaml
