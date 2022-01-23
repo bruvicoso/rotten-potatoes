@@ -28,6 +28,7 @@ jobs:
           bruvicoso/rotten-potatoes:lastes
           bruvicoso/rotten-potatos:${{ github.run_number }}
   CD:
+    needs: [CI]
     runs-on: ubuntu-latest
 
     steps:
