@@ -13,8 +13,8 @@ jobs:
       - name: Docker Login
         uses: docker/login-action@v1.12.0
         with:
-          username: ${{ secrets.DICKERHUB_USER }}
-          password: ${{ secrets.DICKERHUB_PWD }}
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_PWD }}
 
       - uses: actions/checkout@v2
 
